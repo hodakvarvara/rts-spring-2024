@@ -1,60 +1,105 @@
 // HIGH обозначает логическую единицу или напряжение в высоком состоянии 
 // а LOW обозначает логический ноль или напряжение в низком состоянии 
 // digitalWrite - для записи цифрового значения (HIGH или LOW) на конкретный цифровой пин микроконтроллера.
-const int ledPin3 = 3;  
-const int ledPin5 = 5;  
-const int ledPin6 = 6;  
-const int ledPin9 = 9;  
-const int ledPin10 = 10;  
+ 
+const int ledPin = 3;
+const int ledPin2 = 5;
+const int ledPin3 = 6;
+const int ledPin4 = 9;
+const int ledPin5 = 10;
 
-const int interval3 = 10000;  
-const int interval5 = 1000;  
-const int interval6 = 500;  
-const int interval9 = 100;  
-const int interval10 = 50;
 
+int ledState = LOW; 
+int ledState2 = LOW;
+int ledState3 = LOW;
+int ledState4 = LOW;
+int ledState5 = LOW;
+
+
+unsigned long previousMillis = 0; 
+unsigned long previousMillis2 = 0; 
 unsigned long previousMillis3 = 0; 
-unsigned long previousMillis5 = 0; 
-unsigned long previousMillis6 = 0; 
-unsigned long previousMillis9 = 0; 
-unsigned long previousMillis10 = 0; 
+unsigned long previousMillis4 = 0; 
+unsigned long previousMillis5 = 0;  
 
-int ledStatePin3 = LOW;
-int ledStatePin5 = LOW;
-int ledStatePin6 = LOW;
-int ledStatePin9 = LOW;
-int ledStatePin10 = LOW;
-//int ledState = LOW;  // ledState used to set the LED
-//unsigned long previousMillis = 0;  // will store last time LED was updated
-//const long interval = 10;  // interval at which to blink (milliseconds)
+
+const long interval = 10000;
+const long interval2 = 1000;
+const long interval3 = 500;
+const long interval4 = 100;
+const long interval5 = 50;  
 
 void setup() {
+
+  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
   pinMode(ledPin3, OUTPUT);
+  pinMode(ledPin4, OUTPUT);
   pinMode(ledPin5, OUTPUT);
-  pinMode(ledPin6, OUTPUT);
-  pinMode(ledPin9, OUTPUT);
-  pinMode(ledPin10, OUTPUT);
 }
 
-void toggleLED(unsigned long currentMillis, unsigned long& previousMillis, unsigned long interval, int pin, int& ledState) {
-  if (currentMillis * 1000 - previousMillis >= interval) {
-    previousMillis = currentMillis * 1000;
+void loop() {
+
+  unsigned long currentMillis = micros();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
     if (ledState == LOW) {
       ledState = HIGH;
     } else {
       ledState = LOW;
     }
-    digitalWrite(pin, ledState);
+
+    digitalWrite(ledPin, ledState);
   }
-}
 
-void loop() {
-   unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis2 >= interval2) {
+    previousMillis2 = currentMillis;
 
-  toggleLED(currentMillis, previousMillis3, interval3, ledPin3, ledStatePin3);
-  toggleLED(currentMillis, previousMillis5, interval5, ledPin5, ledStatePin5);
-  toggleLED(currentMillis, previousMillis6, interval6, ledPin6, ledStatePin6);
-  toggleLED(currentMillis, previousMillis9, interval9, ledPin9, ledStatePin9);
-  toggleLED(currentMillis, previousMillis10, interval10, ledPin10, ledStatePin10);
+    if (ledState2 == LOW) {
+      ledState2 = HIGH;
+    } else {
+      ledState2 = LOW;
+    }
+
+    digitalWrite(ledPin2, ledState2);
+  }
+
+  if (currentMillis - previousMillis3 >= interval3) {
+    previousMillis3 = currentMillis;
+
+    if (ledState3 == LOW) {
+      ledState3 = HIGH;
+    } else {
+      ledState3 = LOW;
+    }
+
+    digitalWrite(ledPin3, ledState3);
+  }
+
+  if (currentMillis - previousMillis4 >= interval4) {
+    previousMillis4 = currentMillis;
+
+    if (ledState4 == LOW) {
+      ledState4 = HIGH;
+    } else {
+      ledState4 = LOW;
+    }
+
+    digitalWrite(ledPin4, ledState4);
+  }
+
+  if (currentMillis - previousMillis5 >= interval5) {
+    previousMillis5 = currentMillis;
+
+    if (ledState5 == LOW) {
+      ledState5 = HIGH;
+    } else {
+      ledState5 = LOW;
+    }
+
+    digitalWrite(ledPin5, ledState5);
+  }
 
 }
