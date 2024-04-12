@@ -5,11 +5,12 @@ const int ledPin6 = 6;
 const int ledPin9 = 9;  
 const int ledPin10 = 10;  
 
-unsigned long previousMillis3 = 0; 
-unsigned long previousMillis5 = 0; 
-unsigned long previousMillis6 = 0; 
-unsigned long previousMillis9 = 0; 
-unsigned long previousMillis10 = 0; 
+
+const int interval3 = 10000;  
+const int interval5 = 1000;  
+const int interval6 = 500;  
+const int interval9 = 100;  
+const int interval10 = 50;
 
 int ledStatePin3 = LOW;
 int ledStatePin5 = LOW;
